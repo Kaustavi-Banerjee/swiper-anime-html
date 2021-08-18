@@ -5,23 +5,25 @@ const swiper = new Swiper('.swiper-container', {
   },
   on: {
     init: () => {
-      anime({
-        targets: '.sub-heading',
-        translateY: -20,
-        opacity: 1,
-        easing: 'easeInOutQuad',
+      var t1 = anime.timeline({
+        easing: 'easeOutExpo',
         duration: 800
-      });
-    },
-
-    sliderMove: () => {
-      anime({
+      })
+      t1.add({
         targets: '.sub-heading',
-        translateY: -20,
         opacity: 1,
-        easing: 'easeInOutQuad',
-        duration: 800
-      });
+        translateY: -20,
+      })
+      .add({
+        targets: '.main-title',
+        opacity: 1,
+        translateX: 20,
+      },'1000')
+      .add({
+        targets: '.btn',
+        opacity: 1,
+        translateY: -20,
+      }, '1400')
     }
   }
 })
